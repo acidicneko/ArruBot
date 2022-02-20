@@ -13,9 +13,6 @@ A Discord Bot written in Java.
   </a>
 </div>
 
-
-![alt text](https://github.com/clawbhaiya/ArruBot/raw/main/images/arru-img.jpg "Meow :3")
-
 ---
 
 ## Building

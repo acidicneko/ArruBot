@@ -1,1 +1,1 @@
-Worker: mvn exec:java -Dexec.mainClass=arru.Arru
+Worker: java -jar target/ArruBot-1.0-jar-with-dependencies.jar

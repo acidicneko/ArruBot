@@ -20,6 +20,8 @@ public class CmdManager {
         addCmd(new Join());
         addCmd(new Leave());
         addCmd(new Version());
+        addCmd(new Play());
+        addCmd(new Stop());
     }
 
     public void addCmd(Cmd command){

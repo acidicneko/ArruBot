@@ -20,6 +20,9 @@ public class Join implements Cmd {
         } else {
             final AudioManager audioManager = event.getGuild().getAudioManager();
             audioManager.openAudioConnection(event.getMessage().getMember().getVoiceState().getChannel());
+            event.getChannel().sendMessage("Joined the voice channel: "
+                                            + event.getMessage().getMember()
+                                                .getVoiceState().getChannel().getName()).queue();
         }
     }
 

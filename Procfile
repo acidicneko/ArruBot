@@ -1,0 +1,1 @@
+Worker: mvn exec:java -Dexec.mainClass=arru.Arru

@@ -22,6 +22,7 @@ public class CmdManager {
         addCmd(new Version());
         addCmd(new Play());
         addCmd(new Stop());
+        addCmd(new Quote());
     }
 
     public void addCmd(Cmd command){

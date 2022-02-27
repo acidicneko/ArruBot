@@ -9,21 +9,21 @@
     <version>1.0</version>
 
     <build>
-    <plugins>
-        <plugin>
-        <artifactId>maven-assembly-plugin</artifactId>
-        <configuration>
-            <archive>
-                <manifest>
-                    <mainClass>arru.Arru</mainClass>
-                </manifest>
-            </archive>
-            <descriptorRefs>
-                <descriptorRef>jar-with-dependencies</descriptorRef>
-            </descriptorRefs>
-        </configuration>
-    </plugin>
-    </plugins>
+        <plugins>
+            <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>arru.Arru</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                    <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+            </configuration>
+            </plugin>
+        </plugins>
     </build>
 
     <properties>

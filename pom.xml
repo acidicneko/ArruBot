@@ -23,6 +23,23 @@
                 </descriptorRefs>
             </configuration>
             </plugin>
+
+            <plugin>
+            <artifactId>maven-assembly-plugin</artifactId>
+                <version>3.0.0</version>
+                <configuration>
+                <archive>
+                    <manifest>
+                        <mainClass>arru.Arru</mainClass>
+                    </manifest>
+                </archive>
+                <descriptorRefs>
+                <descriptorRef>jar-with-dependencies</descriptorRef>
+                </descriptorRefs>
+                <finalName>helloworld</finalName>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

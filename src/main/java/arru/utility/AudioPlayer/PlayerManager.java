@@ -66,7 +66,7 @@ public class PlayerManager {
                     musicManager.scheduler.queue(track);
                 }*/
                 if(!tracks.isEmpty()){
-                    musicManager.scheduler.queue(tracks.get(0));
+                    musicManager.scheduler.queue(tracks.get(0), event);
                     EmbedBuilder eb = new EmbedBuilder();
                     eb.setAuthor(event.getMessage().getAuthor().getName() +
                                     "#" + event.getMessage().getAuthor().getDiscriminator(), null,
@@ -78,6 +78,9 @@ public class PlayerManager {
                     eb.addField("YT Link", tracks.get(0).getInfo().uri, false);
                     eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
                     eb.setTimestamp(Instant.now());
+                    String videoID = tracks.get(0).getInfo().uri.substring(tracks.get(0).getInfo().uri.lastIndexOf("?") + 3);
+                    String thumbnailURL = "https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg";
+                    eb.setThumbnail(thumbnailURL);
                     channel.sendMessageEmbeds(eb.build()).queue();
                 }
                 
@@ -85,7 +88,7 @@ public class PlayerManager {
 
             @Override
             public void trackLoaded(AudioTrack track) {
-                musicManager.scheduler.queue(track);
+                musicManager.scheduler.queue(track, event);
                 EmbedBuilder eb = new EmbedBuilder();
                 eb.setTitle("Track added to queue");
                 eb.setColor(Color.YELLOW);

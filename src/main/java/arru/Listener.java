@@ -7,6 +7,7 @@ import net.dv8tion.jda.api.events.ReadyEvent;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 import net.dv8tion.jda.api.events.guild.GuildReadyEvent;
 
+import arru.info.Constants;
 import arru.utility.CmdManager;
 import arru.utility.Logger;
 
@@ -18,12 +19,13 @@ public class Listener extends ListenerAdapter {
     @Override
     public void onReady(@Nonnull ReadyEvent event){
         System.out.println(event.getJDA().getSelfUser().getName() + " is online.");
+        Constants.selfMember = event.getJDA().getSelfUser();
     }
 
     @Override
     public void onGuildReady(@Nonnull GuildReadyEvent event){
         logger.onGuildReady(event);
-        
+
     }
 
     @Override

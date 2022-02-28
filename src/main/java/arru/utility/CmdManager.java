@@ -36,6 +36,8 @@ public class CmdManager {
     }
 
     public void handleMsg(MessageReceivedEvent event){
+        
+        if(event.getAuthor().isBot())   return;
 
         final String msg = event.getMessage().getContentRaw();
         final String[] argv = msg.split(" ");

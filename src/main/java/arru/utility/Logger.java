@@ -1,6 +1,7 @@
 package arru.utility;
 
 import java.awt.Color;
+import java.time.Instant;
 
 import javax.annotation.Nonnull;
 
@@ -19,7 +20,11 @@ public class Logger extends ListenerAdapter {
         EmbedBuilder eb = new EmbedBuilder();
         eb.setTitle(":cat: Arru Online UwU");
         eb.setColor(Color.RED);
-        eb.addField("Arru is Here!", "Throw some party dude UwU", true);
+        eb.setAuthor(event.getJDA().getSelfUser().getName() +
+                        "#" + event.getJDA().getSelfUser().getDiscriminator(), null,
+                        event.getJDA().getSelfUser().getAvatarUrl());
+        eb.setDescription("Arru is Here! Throw some party dude");
+        eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
         event.getGuild().getTextChannelsByName("server-logs", true).get(0)
                         .sendMessageEmbeds(eb.build())
                         .queue();
@@ -33,13 +38,21 @@ public class Logger extends ListenerAdapter {
                                             .get(0);
 
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setTitle(":cat: New mwessage!");
-            eb.setColor(Color.PINK);
-            eb.addField("Server", event.getGuild().getName(), true);
-            eb.addField("Channel", event.getChannel().getName(), true);
-            eb.addBlankField(false);
-            eb.addField("By", event.getAuthor().getName(), true);
-            eb.addField("Contents", event.getMessage().getContentRaw(), true);
+            eb.setColor(Color.MAGENTA);
+            eb.setAuthor(event.getMessage().getAuthor().getName() + 
+                            "#" + event.getMessage().getAuthor().getDiscriminator(), null,
+                            event.getMessage().getAuthor().getAvatarUrl());
+            
+            eb.setDescription("**Message sent in** <#" + event.getMessage().getChannel().getId() + "> [Jump to Message]("
+                            + event.getMessage().getJumpUrl() + ")");
+
+            eb.addField("Content", event.getMessage().getContentRaw(), false);
+            if (!event.getMessage().getAttachments().isEmpty()) {
+                eb.setImage(event.getMessage().getAttachments().get(0).getUrl());
+            }
+            eb.setTimestamp(Instant.now());
+            eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
+            eb.setThumbnail(event.getGuild().getIconUrl());
             logChannel.sendMessageEmbeds(eb.build()).queue();
         }
     }

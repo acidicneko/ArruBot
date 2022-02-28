@@ -50,7 +50,7 @@ public class Play implements Cmd {
 
 
         PlayerManager.getINSTANCE()
-                .loadAndPlay(channel, link);
+                .loadAndPlay(channel, link, event);
 
     }
 

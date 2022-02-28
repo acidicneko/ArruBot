@@ -1,6 +1,7 @@
 package arru.utility.AudioPlayer;
 
 import java.awt.Color;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +17,7 @@ import com.sedmelluq.discord.lavaplayer.track.AudioTrack;
 import net.dv8tion.jda.api.EmbedBuilder;
 import net.dv8tion.jda.api.entities.Guild;
 import net.dv8tion.jda.api.entities.TextChannel;
+import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class PlayerManager {
     private static PlayerManager INSTANCE;
@@ -39,7 +41,7 @@ public class PlayerManager {
         });
     }
 
-    public void loadAndPlay(TextChannel channel, String trackUrl){
+    public void loadAndPlay(TextChannel channel, String trackUrl, MessageReceivedEvent event){
         final GuildMusicManager musicManager = this.getMusicManager(channel.getGuild());
 
         this.audioPlayerManager.loadItemOrdered(musicManager, trackUrl, new AudioLoadResultHandler() {
@@ -66,10 +68,17 @@ public class PlayerManager {
                 if(!tracks.isEmpty()){
                     musicManager.scheduler.queue(tracks.get(0));
                     EmbedBuilder eb = new EmbedBuilder();
+                    eb.setAuthor(event.getMessage().getAuthor().getName() +
+                                    "#" + event.getMessage().getAuthor().getDiscriminator(), null,
+                                    event.getMessage().getAuthor().getAvatarUrl());
                     eb.setTitle(":notes: Track added to queue");
                     eb.setColor(Color.YELLOW);
                     eb.addField("Name", tracks.get(0).getInfo().title, false);
                     eb.addField("By", tracks.get(0).getInfo().author, false);
+                    eb.addField("YT Link", tracks.get(0).getInfo().uri, false);
+                    eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
+                    eb.setThumbnail(tracks.get(0).getInfo().uri);
+                    eb.setTimestamp(Instant.now());
                     channel.sendMessageEmbeds(eb.build()).queue();
                 }
                 

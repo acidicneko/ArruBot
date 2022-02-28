@@ -77,7 +77,6 @@ public class PlayerManager {
                     eb.addField("By", tracks.get(0).getInfo().author, false);
                     eb.addField("YT Link", tracks.get(0).getInfo().uri, false);
                     eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
-                    eb.setThumbnail(tracks.get(0).getInfo().uri);
                     eb.setTimestamp(Instant.now());
                     channel.sendMessageEmbeds(eb.build()).queue();
                 }

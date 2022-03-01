@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.time.Instant;
 import java.util.List;
 import java.awt.Color;
 import java.io.BufferedReader;
@@ -36,12 +37,20 @@ public class Quote implements Cmd {
 
             JSONObject jsonObject = (JSONObject) array.get(0);
 
+            String quote = jsonObject.get("q").toString();
+            String author = jsonObject.get("a").toString();
+
             EmbedBuilder eb = new EmbedBuilder();
+            eb.setAuthor(event.getJDA().getSelfUser().getName() +
+                        "#" + event.getJDA().getSelfUser().getDiscriminator(), null,
+                        event.getJDA().getSelfUser().getAvatarUrl());
             eb.setTitle("Get up you dead soul!");
-            eb.setColor(Color.ORANGE);
-            eb.addField("Say", jsonObject.get("q").toString(), false);
-            eb.addBlankField(false);
-            eb.addField("By", jsonObject.get("a").toString(), false);
+            eb.setThumbnail("https://raw.githubusercontent.com/clawbhaiya/ArruBot/main/images/arru-img.jpg");
+            eb.setDescription(quote);
+            eb.addField("By", author, false);
+            eb.setColor(Color.GREEN);
+            eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());
+            eb.setTimestamp(Instant.now());
             event.getChannel().sendMessageEmbeds(eb.build()).queue();
             
         } catch (MalformedURLException e) {

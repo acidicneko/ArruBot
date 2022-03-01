@@ -35,20 +35,19 @@ public class TrackScheduler extends AudioEventAdapter {
         AudioTrack track = this.queue.poll();
         if(lastChannel != null && track != null){
             EmbedBuilder eb = new EmbedBuilder();
-                    eb.setAuthor(Constants.selfMember.getName() +
-                                    "#" + Constants.selfMember.getDiscriminator(), null,
-                                    Constants.selfMember.getAvatarUrl());
-                    eb.setTitle(":notes: Now Playing");
-                   // eb.setColor(Color.YELLOW);
-                    String videoID = track.getInfo().uri.substring(track.getInfo().uri.lastIndexOf("?") + 3);
-                    String thumbnailURL = "https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg";
-                    eb.setThumbnail(thumbnailURL);
-                    eb.addField("Name", track.getInfo().title, false);
-                    eb.addField("By", track.getInfo().author, false);
-                    eb.addField("YT Link", track.getInfo().uri, false);
-                    eb.setFooter("ArruChan", Constants.selfMember.getAvatarUrl());
-                    lastChannel.sendMessageEmbeds(eb.build()).queue();
-                    
+            eb.setAuthor(Constants.selfMember.getName() +
+                        "#" + Constants.selfMember.getDiscriminator(), null,
+                        Constants.selfMember.getAvatarUrl());
+            eb.setTitle(":notes: Now Playing");
+            // eb.setColor(Color.YELLOW);
+            String videoID = track.getInfo().uri.substring(track.getInfo().uri.lastIndexOf("?") + 3);
+            String thumbnailURL = "https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg";
+            eb.setThumbnail(thumbnailURL);
+            eb.addField("Name", track.getInfo().title, false);
+            eb.addField("By", track.getInfo().author, false);
+            eb.addField("YT Link", track.getInfo().uri, false);
+            eb.setFooter("ArruChan", Constants.selfMember.getAvatarUrl());
+            lastChannel.sendMessageEmbeds(eb.build()).queue();
         }
         this.player.startTrack(track, false);
     }

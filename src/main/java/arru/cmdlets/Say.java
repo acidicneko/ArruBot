@@ -10,6 +10,7 @@ public class Say implements Cmd {
         String reply = new String();
         for(String temp: argv) reply += temp + " ";
         event.getChannel().sendMessage(reply).queue();
+        event.getMessage().delete().queue();
     }
 
     public String cmdName(){

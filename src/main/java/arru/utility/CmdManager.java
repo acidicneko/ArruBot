@@ -24,6 +24,7 @@ public class CmdManager {
         addCmd(new Stop());
         addCmd(new Quote());
         addCmd(new Kick());
+        addCmd(new Skip());
     }
 
     public void addCmd(Cmd command){

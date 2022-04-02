@@ -1,5 +1,6 @@
 package arru.utility.AudioPlayer;
 
+import java.awt.Color;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -39,10 +40,10 @@ public class TrackScheduler extends AudioEventAdapter {
                         "#" + Constants.selfMember.getDiscriminator(), null,
                         Constants.selfMember.getAvatarUrl());
             eb.setTitle(":notes: Now Playing");
-            // eb.setColor(Color.YELLOW);
+            eb.setColor(Color.WHITE);
             String videoID = track.getInfo().uri.substring(track.getInfo().uri.lastIndexOf("?") + 3);
             String thumbnailURL = "https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg";
-            eb.setThumbnail(thumbnailURL);
+            eb.setImage(thumbnailURL);
             eb.addField("Name", track.getInfo().title, false);
             eb.addField("By", track.getInfo().author, false);
             eb.addField("YT Link", track.getInfo().uri, false);

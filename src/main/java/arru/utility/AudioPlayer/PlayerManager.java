@@ -80,7 +80,7 @@ public class PlayerManager {
                     eb.setTimestamp(Instant.now());
                     String videoID = tracks.get(0).getInfo().uri.substring(tracks.get(0).getInfo().uri.lastIndexOf("?") + 3);
                     String thumbnailURL = "https://img.youtube.com/vi/" + videoID + "/hqdefault.jpg";
-                    eb.setThumbnail(thumbnailURL);
+                    eb.setImage(thumbnailURL);
                     channel.sendMessageEmbeds(eb.build()).queue();
                 }
                 

@@ -41,11 +41,11 @@ public class Quote implements Cmd {
             String author = jsonObject.get("a").toString();
 
             EmbedBuilder eb = new EmbedBuilder();
-            eb.setAuthor(event.getJDA().getSelfUser().getName() +
-                        "#" + event.getJDA().getSelfUser().getDiscriminator(), null,
-                        event.getJDA().getSelfUser().getAvatarUrl());
+            eb.setAuthor(event.getMessage().getAuthor().getName() + 
+                            "#" + event.getMessage().getAuthor().getDiscriminator(), null,
+                            event.getMessage().getAuthor().getAvatarUrl());
             eb.setTitle("Get up you dead soul!");
-            eb.setThumbnail("https://raw.githubusercontent.com/clawbhaiya/ArruBot/main/images/arru-img.jpg");
+            eb.setThumbnail("https://c4.wallpaperflare.com/wallpaper/186/380/857/your-name-sky-stars-kimi-no-na-wa-wallpaper-preview.jpg");
             eb.setDescription(quote);
             eb.addField("By", author, false);
             eb.setColor(Color.GREEN);

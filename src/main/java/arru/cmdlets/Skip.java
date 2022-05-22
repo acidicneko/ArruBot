@@ -43,6 +43,9 @@ public class Skip implements Cmd{
             return;
         }
 
+        event.getChannel().sendMessage("Mew skipped the song: `" 
+                                    + musicManager.audioPlayer.getPlayingTrack().getInfo().title
+                                    + "`").queue();
         musicManager.scheduler.nextTrack();
     }
 

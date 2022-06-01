@@ -20,7 +20,7 @@ public class Version implements Cmd {
         eb.setThumbnail("https://raw.githubusercontent.com/clawbhaiya/ArruBot/main/images/arru-img.jpg");
         eb.setTitle(":cat: Arru the cat");
         eb.setColor(Color.BLUE);
-        eb.setDescription("Made with :brown_heart: by Clawbhaiya.");
+        eb.setDescription("Made with :brown_heart: by Acidicneko.");
         eb.addField("Version", Constants.version, false);
         eb.addField("Written in", ":coffee: Java (JDK17)", false);
         eb.setFooter("ArruChan", event.getJDA().getSelfUser().getAvatarUrl());

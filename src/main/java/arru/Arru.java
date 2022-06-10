@@ -14,7 +14,7 @@ class Arru extends ListenerAdapter {
     public static void main(String[] args) throws LoginException {
         Constants.botPrefix = System.getenv("BOT_PREFIX");//Dotenv.load().get("BOT_PREFIX");
         JDABuilder.createDefault(System.getenv("BOT_TOKEN"))
-                    .setActivity(Activity.playing("with your life"))
+                    .setActivity(Activity.watching("your mom"))
                     .enableIntents(GatewayIntent.GUILD_VOICE_STATES)
                     .enableIntents(GatewayIntent.GUILD_MEMBERS)
                     .addEventListeners(new Listener())

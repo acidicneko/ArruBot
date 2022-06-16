@@ -25,6 +25,7 @@ public class CmdManager {
         addCmd(new Quote());
         addCmd(new Kick());
         addCmd(new Skip());
+        addCmd(new Ping());
     }
 
     public void addCmd(Cmd command){

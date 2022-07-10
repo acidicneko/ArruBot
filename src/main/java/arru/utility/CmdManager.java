@@ -50,6 +50,8 @@ public class CmdManager {
             if(commands.containsKey(argv[1].toLowerCase())){
                 final List<String> arguments = Arrays.asList(argv).subList(2, argv.length);
                 commands.get(argv[1].toLowerCase()).execute(arguments, event);
+            } else {
+                event.getMessage().reply("uknown command: " + argv[1]).queue();
             }
 
         }

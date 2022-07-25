@@ -45,6 +45,8 @@ public class Speedup implements Cmd {
             audioFilter.setSpeed(Float.parseFloat(argv.get(0)));
             return Collections.singletonList(audioFilter);
         });
+
+        event.getChannel().sendMessage("Audio player playback speed set to: " + argv.get(0) + "x").queue();
     }
 
     @Override

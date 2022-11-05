@@ -11,6 +11,7 @@ public class Leave implements Cmd {
     public void execute(List<String> argv, MessageReceivedEvent event){
         if(event.getMessage().getMember().getVoiceState().getChannel() == null){
             event.getChannel().sendMessage("You sure you aint high?\nI am not in your voice channel").queue();
+            return;
         }
         event.getGuild().getAudioManager().closeAudioConnection();
     }

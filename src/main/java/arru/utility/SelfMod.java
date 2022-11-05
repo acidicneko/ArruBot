@@ -6,8 +6,12 @@ import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class SelfMod {
     final String[] exceptionList = System.getenv("EXCEPTION_LIST").split(":");
+    final String[] serverExceptionList = System.getenv("GUILD_EXCEPTION").split(":");
 
     public void handleMsg(MessageReceivedEvent event){
+        if(Arrays.asList(serverExceptionList).contains(event.getGuild().getId())){
+            return;
+        }
         if(Arrays.asList(exceptionList).contains(event.getAuthor().getId())){
             return;
         }

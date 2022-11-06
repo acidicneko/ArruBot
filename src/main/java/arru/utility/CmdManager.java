@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import arru.cmdlets.*;
-import arru.info.Constants;
+import arru.info.GuildInfo;
 import net.dv8tion.jda.api.events.message.MessageReceivedEvent;
 
 public class CmdManager {
@@ -27,6 +27,7 @@ public class CmdManager {
         addCmd(new Skip());
         addCmd(new Ping());
         addCmd(new Speedup());
+        addCmd(new Prefix());
     }
 
     public void addCmd(Cmd command){
@@ -46,7 +47,7 @@ public class CmdManager {
         final String msg = event.getMessage().getContentRaw();
         final String[] argv = msg.split(" ");
 
-        if(argv[0].contentEquals(Constants.botPrefix)){
+        if(argv[0].contentEquals(GuildInfo.getGuildPrefix(event.getGuild().getId()))){
 
             if(commands.containsKey(argv[1].toLowerCase())){
                 final List<String> arguments = Arrays.asList(argv).subList(2, argv.length);

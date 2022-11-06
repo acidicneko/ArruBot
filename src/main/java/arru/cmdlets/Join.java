@@ -12,6 +12,7 @@ public class Join implements Cmd {
     public void execute(List<String> argv, MessageReceivedEvent event){
         if(event.getGuild().getSelfMember().getVoiceState().inAudioChannel()){
             event.getChannel().sendMessage("Mew already in voice channel.").queue();
+            return;
         }
 
         if(event.getMessage().getMember().getVoiceState().getChannel() == null){

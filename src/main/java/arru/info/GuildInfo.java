@@ -49,7 +49,7 @@ public class GuildInfo {
             }
             Wini ini = new Wini(prefixFile);
             if(!ini.get("prefixes").containsKey(guildID)){
-                return "arr";
+                return "arru";
             }
             String prefix = ini.get("prefixes", guildID);
             return prefix;
